@@ -61,6 +61,9 @@ defmodule Ejabberd.Mixfile do
       nil -> "deps"
       _ -> ".."
     end
+
+    base = if Mix.Project.umbrella?, do: "../.."
+
     Enum.map(deps, fn dep -> base<>"/#{dep}/include" end)
   end
 
