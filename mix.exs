@@ -34,9 +34,7 @@ defmodule Ejabberd.Mixfile do
 
   defp erlc_options do
     # Use our own includes + includes from all dependencies
-    includes = ["include"] ++ deps_include(["fast_xml", "xmpp", "p1_utils"])
-
-    [:debug_info, {:d, :ELIXIR_ENABLED}] ++ Enum.map(includes, fn(path) -> {:i, path} end)
+    [:debug_info, {:d, :ELIXIR_ENABLED}, {:i, "deps/fast_xml/include"}, {:i, "deps/p1_utils/include"}, {:i, "deps/xmpp/include"}]
   end
 
   defp deps do
