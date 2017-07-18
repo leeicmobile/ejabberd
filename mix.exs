@@ -34,7 +34,11 @@ defmodule Ejabberd.Mixfile do
 
   defp erlc_options do
     # Use our own includes + includes from all dependencies
-    [:debug_info, {:d, :ELIXIR_ENABLED}, {:i, "deps/fast_xml/include"}, {:i, "deps/p1_utils/include"}, {:i, "deps/xmpp/include"}]
+    if Mix.Project.umbrella? do 
+      [:debug_info, {:d, :ELIXIR_ENABLED}, {:i, "../../deps/fast_xml/include"}, {:i, "../../deps/p1_utils/include"}, {:i, "../../deps/xmpp/include"}]
+    else
+      [:debug_info, {:d, :ELIXIR_ENABLED}, {:i, "deps/fast_xml/include"}, {:i, "deps/p1_utils/include"}, {:i, "deps/xmpp/include"}]
+    end
   end
 
   defp deps do
